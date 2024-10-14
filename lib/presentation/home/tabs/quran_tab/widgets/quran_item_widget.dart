@@ -1,44 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:quran_app/core/routes_manger.dart';
 
 class QuranItemWidget extends StatelessWidget {
-  QuranItemWidget(
-      {super.key, required this.suraItem, required this.versesNumber});
+  QuranItemWidget({super.key, required this.suraItem});
 
-  String suraItem;
-  String versesNumber;
+  SuraItem suraItem;
 
   @override
   Widget build(BuildContext context) {
-    return IntrinsicHeight(
-      child: Row(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(4),
-              child: Text(
-                versesNumber,
-                style: Theme.of(context).textTheme.titleMedium,
-                textAlign: TextAlign.center,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, RoutesManger.quranDetailsRoute,
+            arguments: suraItem);
+      },
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Text(
+                  suraItem.versesNumber,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
               ),
             ),
-          ),
-          VerticalDivider(
-            color: Theme.of(context).dividerColor,
-            thickness: 3,
-            width: 3,
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(4),
+            VerticalDivider(
+              color: Theme.of(context).dividerColor,
+              width: 3,
+              thickness: 3,
+            ),
+            Expanded(
               child: Text(
-                suraItem,
-                style: Theme.of(context).textTheme.titleMedium,
+                suraItem.suraName,
                 textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+}
+
+class SuraItem {
+  String suraName;
+  String versesNumber;
+  int index;
+
+  SuraItem(
+      {required this.versesNumber,
+        required this.suraName,
+        required this.index});
 }
