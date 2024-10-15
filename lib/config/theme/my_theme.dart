@@ -3,6 +3,7 @@ import 'package:quran_app/core/colors_manger.dart';
 
 class MyTheme {
   static ThemeData lightMode = ThemeData(
+    primaryColor: ColorsManger.goldColor,
       cardTheme: CardTheme(
         margin: const EdgeInsets.symmetric(
           horizontal: 12,
