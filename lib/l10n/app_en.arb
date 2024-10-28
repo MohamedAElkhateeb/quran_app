@@ -1,0 +1,16 @@
+{
+"appTitle" : "Quran",
+"quranTab" : "Quran",
+"hadithTab" : "Hadith",
+"sebhaTab" : "Sebha",
+"radioTab" : "Radio",
+"settingsTab" : "Settings",
+"chapterName" : "Chapter Name",
+"versesNumber" : "Verses Number",
+"ahadith" : "Al-Ahadith",
+"theme" : "Theme",
+"dark" : "Dark",
+"light" : "Light",
+"language" : "Language",
+"tsbehNumber" : "Number Of Tasbeehs"
+}

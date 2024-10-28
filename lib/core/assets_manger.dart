@@ -2,6 +2,7 @@ class AssetsManger{
   static const String base = 'assets/images/';
   static const String lightSplash = '${base}splash.png';
   static const String lightMainBg = '${base}default_bg.png';
+  static const String darkMainBg = '${base}dark_bg@2x.png';
   static const String quranIcon = '${base}icon_quran.png';
   static const String hadethIcon = '${base}icon_hadeth.png';
   static const String sebhaIcon = '${base}icon_sebha.png';

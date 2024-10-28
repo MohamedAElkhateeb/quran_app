@@ -11,7 +11,7 @@ class QuranTabHeaderWidget extends StatelessWidget {
       decoration: const BoxDecoration(
           border: Border.symmetric(
               horizontal:
-              BorderSide(width: 3, color: ColorsManger.goldColor))),
+              BorderSide(width: 3, color: ColorsManger.yellow))),
       child: IntrinsicHeight(
         child: Row(
           children: [
