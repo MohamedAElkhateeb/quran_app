@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_app/config/theme/my_theme.dart';
 import 'package:quran_app/core/assets_manger.dart';
 import 'package:quran_app/core/string_manger.dart';
 import 'package:quran_app/presentation/home/tabs/hadeth_tab/hadeth_tab.dart';
@@ -6,6 +8,8 @@ import 'package:quran_app/presentation/home/tabs/quran_tab/quran_tab.dart';
 import 'package:quran_app/presentation/home/tabs/radio_tab/radio_tab.dart';
 import 'package:quran_app/presentation/home/tabs/sebha_tab/sebha_tab.dart';
 import 'package:quran_app/presentation/home/tabs/setting_tab/setting_tab.dart';
+import 'package:quran_app/providers/hadith_provider.dart';
+import 'package:quran_app/providers/settings_providers.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -15,22 +19,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   int selectedIndex = 0;
 
   List<Widget> tabs = [
     QuranTab(),
-    HadithTab(),
+    ChangeNotifierProvider(
+        create: (context) => HadithProvider(),
+        child: HadithTab()),
     SebhaTab(),
     RadioTab(),
-    SettingTab(),
+    SettingsTab(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingProvider>(context);
     return Stack(
       children: [
-        Image.asset(
-          AssetsManger.lightMainBg,
+        Image.asset( myProvider.isLightTheme()
+              ? AssetsManger.lightMainBg
+              : AssetsManger.darkMainBg,
+
           fit: BoxFit.fill,
           width: double.infinity,
           height: double.infinity,

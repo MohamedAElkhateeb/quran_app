@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_app/config/theme/my_theme.dart';
 import 'package:quran_app/core/assets_manger.dart';
 import 'package:quran_app/core/string_manger.dart';
 
+import '../../../../providers/settings_providers.dart';
 import '../../tabs/hadeth_tab/hadeth_tab.dart';
 
 
@@ -10,15 +13,18 @@ class HadithDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var myProvider = Provider.of<SettingProvider>(context);
     Hadith hadith = ModalRoute.of(context)?.settings.arguments as Hadith;
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
               image: AssetImage(
-                AssetsManger.lightMainBg,
-              ))),
+                myProvider.isLightTheme()
+                    ? AssetsManger.lightMainBg
+                    : AssetsManger.darkMainBg,
+              ),)),
       child: Scaffold(
         appBar: AppBar(
           title:  Text(StringsManger.appTitle),

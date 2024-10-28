@@ -59,7 +59,7 @@ class _SebhaTabState extends State<SebhaTab> {
                 height: 81,
                 width: 76,
                 decoration: BoxDecoration(
-                  color: ColorsManger.goldColor.withOpacity(.57),
+                  color: ColorsManger.lightPrimary.withOpacity(.57),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Text(
@@ -77,7 +77,7 @@ class _SebhaTabState extends State<SebhaTab> {
                   width: 160,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: ColorsManger.goldColor,
+                    color: ColorsManger.lightPrimary,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Text(tsabeeh[tasbeehIndex]),
