@@ -10,7 +10,7 @@ import 'package:quran_app/presentation/home/tabs/sebha_tab/sebha_tab.dart';
 import 'package:quran_app/presentation/home/tabs/setting_tab/setting_tab.dart';
 import 'package:quran_app/providers/hadith_provider.dart';
 import 'package:quran_app/providers/settings_providers.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
@@ -35,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     var myProvider = Provider.of<SettingProvider>(context);
+
     return Stack(
       children: [
         Image.asset( myProvider.isLightTheme()
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         Scaffold(
           appBar: AppBar(
-            title: const Text(StringsManger.appTitle),
+            title:  Text(AppLocalizations.of(context)!.appTitle),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: selectedIndex,

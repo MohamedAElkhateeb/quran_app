@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/core/assets_manger.dart';
-import 'package:quran_app/core/colors_manger.dart';
-
+import 'package:quran_app/providers/settings_providers.dart';
 
 class SebhaTab extends StatefulWidget {
   SebhaTab({super.key});
@@ -23,70 +24,90 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-            top: 15,
-            right: 150,
-            child: Image.asset(
-              AssetsManger.sebhaHeadLogo,
-              height: 100,
-              width: 65,
-            )),
-        Positioned(
-            top: 88,
-            right: 90,
-            child: Transform.rotate(
-              angle: rotationAngle,
-              child: Image.asset(
-                AssetsManger.sebhaBodyLogo,
-                height: 212,
-                width: 214,
+    var myProvider = Provider.of<SettingProvider>(context);
+    return Center(
+      child: Column(
+        children: [
+          Expanded(
+            flex: 11,
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                Image.asset(
+                  myProvider.isLightTheme()
+                      ? AssetsManger.sebhaHeadLogo
+                      : AssetsManger.sebhaHeadLogoDark,
+                  height: MediaQuery.of(context).size.height * .15,
+                ),
+                Positioned(
+                  top: 88,
+                  child: Transform.rotate(
+                    angle: rotationAngle,
+                    child: Image.asset(
+                      height: MediaQuery.of(context).size.height * .28,
+                      myProvider.isLightTheme()
+                          ? AssetsManger.sebhaBodyLogo
+                          : AssetsManger.sebhaBodyLogoDark,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Spacer(
+            flex: 1,
+          ),
+          Text(AppLocalizations.of(context)!.tsbehNumber,
+              style: Theme.of(context).textTheme.labelSmall),
+          const Spacer(
+            flex: 1,
+          ),
+          IntrinsicWidth(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 12,
               ),
-            )),
-        Positioned(
-          top: 340,
-          left: 96,
-          child: Column(
-            children: [
-              Text('Number Of Tasbeehs',
-                  style: Theme.of(context).textTheme.labelSmall),
-              const SizedBox(
-                height: 25,
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(16),
               ),
-              Container(
+              child: Text(
+                '$counter',
+                style: Theme.of(context).textTheme.labelMedium,
+              ),
+            ),
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+          InkWell(
+            onTap: tasbeehCount,
+            child: IntrinsicWidth(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
                 alignment: Alignment.center,
-                height: 81,
-                width: 76,
                 decoration: BoxDecoration(
-                  color: ColorsManger.lightPrimary.withOpacity(.57),
-                  borderRadius: BorderRadius.circular(25),
+                  color: Theme.of(context).dividerColor,
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  '$counter',
-                  style: TextStyle(fontSize: 22, color: Colors.black),
+                  tsabeeh[tasbeehIndex],
+                  style: Theme.of(context).textTheme.labelMedium,
                 ),
               ),
-              const SizedBox(
-                height: 25,
-              ),
-              InkWell(
-                onTap: tasbeehCount,
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 160,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: ColorsManger.lightPrimary,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Text(tsabeeh[tasbeehIndex]),
-                ),
-              )
-            ],
+            ),
           ),
-        )
-      ],
+          const Spacer(
+            flex: 3,
+          ),
+        ],
+      ),
     );
   }
 

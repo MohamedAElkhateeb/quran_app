@@ -4,6 +4,8 @@ import 'package:quran_app/core/colors_manger.dart';
 class MyTheme {
   static bool isDarkEnabled = true;
   static ThemeData lightTheme = ThemeData(
+    indicatorColor: ColorsManger.lightPrimary,
+    cardColor: ColorsManger.lightPrimary,
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: ColorsManger.lightPrimary,
       shape: RoundedRectangleBorder(
@@ -32,6 +34,7 @@ class MyTheme {
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,
+
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.w600,
         color: Colors.black,
@@ -40,6 +43,8 @@ class MyTheme {
     ),
     dividerColor: ColorsManger.lightPrimary,
     textTheme: const TextTheme(
+      labelLarge:TextStyle(
+          fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
       labelSmall: TextStyle(
         fontSize: 22,
         color: Colors.black,
@@ -61,6 +66,8 @@ class MyTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
+
+    cardColor: ColorsManger.darkPrimary,
     indicatorColor: ColorsManger.yellow,
     primaryColor: ColorsManger.darkPrimary,
     appBarTheme: const AppBarTheme(
@@ -96,6 +103,8 @@ class MyTheme {
     ),
     dividerColor: ColorsManger.yellow,
     textTheme: const TextTheme(
+      labelLarge:TextStyle(
+          fontSize: 21, fontWeight: FontWeight.w500, color: Colors.black),
         labelMedium: TextStyle(
             fontSize: 21, fontWeight: FontWeight.w500, color: Colors.white),
         titleMedium: TextStyle(
