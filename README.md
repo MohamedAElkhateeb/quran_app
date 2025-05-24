@@ -46,7 +46,10 @@ flutter pub get
 
 # Run the app
 flutter run
+---
 
+## 🎥 Demo Video
 
-**🎥 Demo Video**
-👉 Watch the demo video: Quran app demo.webm
+👉 [Watch Demo Video](https://drive.google.com/file/d/1qppbAP_xg1-pGcOcSkTeyw82_rs8R9bE/view?usp=drive_link)
+
+---
